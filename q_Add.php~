@@ -28,7 +28,3 @@ else
 <a href="add_question.php">Back to test page</a>
 </p>
 </div>
-
-<?php 
-include_once('footer.php');
-?>

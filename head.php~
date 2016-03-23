@@ -30,7 +30,7 @@ function getName() {
   <div class="floatright">
   		Logged in as <?php getName();?> (<a href ="./logout.php">Logout</a>)
 	 <!-- end .floatright --></div>
-<a href="./index.php"><img src="./images/exam-builder-logo.png" alt="Exam Builder Logo" width="180" height="90" /></a>
+<a href="./index.php"><img src=".images/exam-builder-logo.png" alt="Exam Builder Logo" width="180" height="90" /></a>
  	 
     <!-- end .header --></div>
   <div class="sidebar">

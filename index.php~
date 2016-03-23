@@ -10,10 +10,7 @@
 	}
 	?>
 </p>
-<p>
-<!-- for demo purposes only -->
-<a href = "./add_question.php">Add a question (demo link only)</a>
-</p>
+
 <!-- end .content --></div>
 
 <?php include('footer.php');?>

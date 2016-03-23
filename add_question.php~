@@ -61,6 +61,5 @@ printf("</tr>");
 
 </table>
 </form>
-
 <!-- end .content --></div>
 <?php include('footer.php');?>
