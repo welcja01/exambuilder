@@ -44,7 +44,7 @@ function getName() {
 	  }
       ?>
     </ul>
-    <!-- end .sidebar1 --></div>
+    <!-- end .sidebar --></div>
     
 
  
