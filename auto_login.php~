@@ -1,4 +1,3 @@
-<!-- Author: Jamie Welch -->
 <?php
 if (!isset($_SESSION)) {
       //Start a session

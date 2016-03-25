@@ -1,5 +1,5 @@
 @charset "utf-8";
-/* --------------------------------------------
+/* ------------------------------------------
 
 CSS Stylesheet for Exam Builder
 
@@ -7,7 +7,7 @@ version: 1.2
 last modified: March 25, 2016 by James Welch 
 Author: James Welch (welcja01@gettysburg.edu)
 
--------------------------------------------- */
+------------------------------------------ */
 
 
 /* Changing the color scheme is easy! Simply use the comments to find what you're looking for! */
