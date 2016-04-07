@@ -37,8 +37,16 @@ function getName() {
   <div class="sidebar">
     <ul class="nav">
       <li><a href="./index.php">Home</a></li>
-      <li><a href="./courses.php">Courses</a></li>
-      <li><a href="./exams.php">Exams</a></li>
+      
+      <li><a href="./courses.php">Courses</a><ul>
+          <li><a href="./courses.php">List Courses</a></li>
+          <li><a href="./add_course.php">Create A Course</a></li>
+      </ul></li>
+      
+      <li><a href="./exams.php">Exams</a><ul>
+          <li><a href="./exams.php">List Exams</a></li>
+          <li><a href="./add_exam.php">Create An Exam</a></li>
+      </ul></li>
       <?php
 	  if($_SESSION['isAdmin']) {
 		  echo('<li><a href="./admin.php">Administration</a></li>');

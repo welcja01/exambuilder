@@ -3,8 +3,8 @@
 
 CSS Stylesheet for Exam Builder
 
-version: 1.2
-last modified: March 25, 2016 by James Welch 
+version: 1.5
+last modified: April 6, 2016 by James Welch 
 Author: James Welch (welcja01@gettysburg.edu)
 
 -------------------------------------------- */
@@ -81,12 +81,29 @@ ul.nav {
 	border-top: 1px solid #FFF; 
 	margin-bottom: 15px; 
 }
+
+ul.nav ul{ 
+   margin : 0px;
+   padding: 0px;
+   list-style-type : none;
+   display: none; 
+}
+   
+ul.nav li:hover ul{ 
+   display : inline;
+   position : absolute;
+}
+
+ul.nav ul li {
+	border-left: 1px solid #FFF; /* this creates the button separation */
+}
+  
 ul.nav li {
 	border-bottom: 1px solid #FFF; /* this creates the button separation */
 }
 ul.nav a, ul.nav a:visited { /* make sure links retain their button look even after being visited */
 	padding: 5px 5px 5px 15px;
-	display: block;
+	display: inline-block;
 	width: 160px;
 	text-decoration: none;
 	background: #5B9BD5; /* background color for buttons */
