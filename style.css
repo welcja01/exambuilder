@@ -56,6 +56,7 @@ a:hover, a:active, a:focus {
 
 .header {
 	background: #E7E6E6; /* header background color */
+	
 }
 
 .sidebar {
@@ -119,6 +120,11 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
 	background: #D4D2D2; /* footer background color */
 	position: relative;
 	clear: both; 
+	font-size:.7em;
+}
+
+.copyright {
+	
 }
 
 /* miscellaneous float classes */

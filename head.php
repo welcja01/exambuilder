@@ -29,7 +29,7 @@ function getName() {
 <div class="container">
   <div class="header">
   <div class="floatright">
-  		Logged in as <?php getName();?> (<a href ="./logout.php">Logout</a>)
+  		Logged in as <?php getName();?> <!-- Logout disabled until login functionality implemented (<a href ="./logout.php">Logout</a>) -->
 	 <!-- end .floatright --></div>
 <a href="./index.php"><img src="./images/exam-builder-logo.png" alt="Exam Builder Logo" width="180" height="90" /></a>
  	 
@@ -49,7 +49,7 @@ function getName() {
       </ul></li>
       <?php
 	  if($_SESSION['isAdmin']) {
-		  echo('<li><a href="./admin.php">Administration</a></li>');
+		 // echo('<li><a href="./admin.php">Administration</a></li>');
 	  }
       ?>
     </ul>

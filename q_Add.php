@@ -5,13 +5,13 @@ include_once('head.php');
 
 //get input from GET
 $name = $_GET['qName'];
-$question = $_GET['qArea'];
-$answer = $_GET['aArea'];
+$question = $db->quote($_GET['qArea']);
+$answer = $db->quote($_GET['aArea']);
 $difficulty = $_GET['diff'];
 $cid=$_GET['Course'];
 
 //add input to question table in database
-$query = "INSERT INTO question (name, difficulty, question, answer) VALUES('$name', '$difficulty', '$question', '$answer');";
+$query = "INSERT INTO question (name, difficulty, question, answer) VALUES('$name', '$difficulty', $question, $answer);";
 $result = $db->query($query);
 
 //get the automatically incremeneted question ID
