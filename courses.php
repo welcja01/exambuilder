@@ -1,9 +1,25 @@
 <!-- Author: Sean Scott -->
 <?php include('head.php');?>
 
-<div class="content">
-<h2 align="center">Your Courses</h2>
+<script>
+function ConfirmDelete()
+{
+  var x = confirm("Are you sure you want to delete this course?\nAll of its categories and questions will be deleted as well.");
+  if (x)
+      return true;
+  else
+    return false;
+}
+</script>
 
+<div class="content">
+
+<!--send user to page for adding new courses-->
+<form name="vQue" method="GET" action="./add_course.php">
+<input type='submit'  name='Add Question' value='Add a New Course' style='float:right; height:25px; margin-right:75px; margin-top:5px'/>
+</form>
+
+<h2 align="center" style="margin-left:155px">Your Courses</h2>
 
 <!--create table for courses-->
 <table align="center" border="1" cellspacing="0" cellpadding="4" 
@@ -50,7 +66,7 @@ while($row =  $result->fetch()){
 
 	//deletes the course
 	printf('<form name="cDel" method="GET" action="./c_Del.php">');
-	printf("<td><input type='submit' name='%d' style=color:red value='Delete Course' />", $id);
+	printf("<td><input type='submit' Onclick='return ConfirmDelete()' name='%d' style=color:red value='Delete Course' />", $id);
 	printf("<input type='hidden' name='Course' value='%d' /></td>",  $id);
 	printf('</form>');
 	printf("</tr> \n");
@@ -59,12 +75,8 @@ printf("</table>\n");
 
 ?>
 
-<!--send user to page for adding new courses-->
-<form name="vQue" method="GET" action="./add_course.php">
-<input type='submit' name='Add Question' value='Add a New Course' />
-</form>
 
-</table>
+
 
 
 <!-- end .content --></div>

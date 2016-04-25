@@ -12,10 +12,19 @@ $username = $_GET['User'];
 //add the input to the courses table in the database
 $query = "INSERT INTO course (username, name, description) VALUES('$username', '$name', '$description');";
 
+$result1 = $db->query($query);
+
+$query = "SELECT LAST_INSERT_ID();";
+$result = $db->query($query);
+$resultValues = $result->fetch();
+$cid = $resultValues[0];
+
+//create hidden unsorted Category
+$query = "INSERT INTO question_cat (cid, name, description) VALUES($cid, 'unsorted', 'questions that have no proper category - this should be hidden');";
 $result = $db->query($query);
 
 //let user know is successful
-if ($result != FALSE)
+if ($result1 != FALSE)
 {
 	printf('<div class="content"><p>Added new course to database.</p>');
 }

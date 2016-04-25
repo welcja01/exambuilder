@@ -21,7 +21,7 @@ $resultValues = $result->fetch();
 $qid = $resultValues[0];
 
 //let user know if insert was successful
-if ($result != FALSE)
+if ($result != false)
 {
 	printf('<div class="content"><p>Added new question to database.</p>');
 	
