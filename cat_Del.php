@@ -8,7 +8,6 @@ $query = "SELECT catID FROM question_cat WHERE name='unsorted' AND cid=$cid;";
 $result = $db->query($query);
 $resultValues = $result->fetch();
 $unsortedID = $resultValues[0];
-printf($unsortedID);
 
 
 

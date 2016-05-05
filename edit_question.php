@@ -1,6 +1,17 @@
 <!-- Author: Sean Scott -->
 <?php include('head.php');
-$cid=$_GET['Course'];?>
+$qid=$_GET['id'];
+$cid=$_GET['Course'];
+
+$query = "SELECT name, question, answer FROM question WHERE qid=$qid;";
+$result = $db->query($query);
+
+while($row =  $result->fetch()){	
+	$name = $row['name'];
+	$ques = $row['question'];
+	$answ = $row['answer'];
+}
+?>
 
 <!--Validating Script -->
 <script>
@@ -33,31 +44,31 @@ function empty() {
 </script>
 
 <div class="content">
-<h2 align="center">Add a Question</h2>
+<h2 align="center">Edit This Question</h2>
 
-<!-- send input to q_Add.php -->
-<form name="qAdd" method="GET" action="./q_Add.php">
+<!-- send input to q_Edit.php -->
+<form name="qEdit" method="GET" action="./q_Edit.php">
 
-<!-- setup table for creating a new question -->
+<!-- setup table for editing -->
 <table align="center" border="1" cellspacing="0" cellpadding="4" 
 	   style="border: solid 1px !important;">
 
 <!-- row for question name -->
 <tr>
 <td>Question Name</td>
-<td><input type="text" name="qName" id="qName" placeholder="name" size="69"></td>
+<td><?php printf('<input type="text" name="qName" id="qName" value="%s" size="69">',$name);?></td>
 </tr>
 
 <!-- row for question text -->
 <tr>
 <td>Question Text</td>
-<td><textarea name="qArea" value="" id="qArea" rows="5" cols="60"></textarea></td>
+<td><?php printf('<textarea name="qArea" value="" id="qArea" rows="5" cols="60">%s</textarea>',$ques);?></td>
 </tr>
 
 <!-- row for answer to question -->
 <tr>
 <td>Answer</td>
-<td><textarea name="aArea" value="" id="aArea" rows="5" cols="60"></textarea></td>
+<td><?php printf('<textarea name="aArea" value="" id="aArea" rows="5" cols="60">%s</textarea>',$answ);?></td>
 </tr>
 
 <!--  row for question difficulty - selected via radio button -->
@@ -91,8 +102,9 @@ printf("</tr>");
 <!-- submit button -->
 <tr>
 <td>submit</td>
-<td><input type="submit" value="Submit Question" Onclick='return empty()'/>
-<?php printf("<input type='hidden' name='Course' value='%s' /></td>",  $cid);?>
+<td><input type="submit" value="Edit Question" Onclick='return empty()'/>
+<?php printf("<input type='hidden' name='qid' value='%s' /></td>",  $qid);
+printf("<input type='hidden' name='Course' value='%s' /></td>",  $cid);?>
 </td>
 </tr>
 

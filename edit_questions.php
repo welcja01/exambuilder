@@ -1,12 +1,22 @@
-<!-- Author: Sean Scott --> 
+<!--Author: Sean Scott -->
+
+<!--Validating Script -->
 <script>
-function ConfirmDelete()
-{
-  var x = confirm("Are you sure you want to delete these questions?");
-  if (x)
-      return true;
-  else
-    return false;
+function empty() {
+	var response = "";
+	var x;
+
+	x = document.getElementById("id").checked;
+	if (x == "") {
+		response += "You must select a question!\n";
+	}
+	if(response != ""){
+		alert(response);
+		return false;
+	}
+	else{
+		return true;
+	}
 }
 </script>
 
@@ -24,27 +34,14 @@ $result = $db->query($query);
 
 printf('<h2 align="center">Your Questions</h2>');
 
-printf('<div style="text-align: center" >');
+//create form for editing questions
+printf("<form name = 'q_Edit' method='GET' action='edit_question.php'>");
 
-//sends user to page for adding new questions
-printf("<form name = 'add_question' method='GET' action='add_question.php'>");
-printf("<input type='submit' name='submit' value='Add a New Question' style='float:left; height:25px; margin-left:75px;margin-top:-12px'>");
+printf('<div style="text-align: center"> ');
+printf('<input type="submit" value="Edit Selected Question"  align="right" Onclick="return empty()" style="padding: 5px 10px; height:30px">');
 printf("<input type='hidden' name='Course' value='%s' /></td>",  $cid);
-printf("</form>");
-
-//sends user to page for adding new questions
-printf("<form name = 'edit_question' method='GET' action='edit_questions.php'>");
-printf("<input type='submit' name='submit' value='Edit a Question' style='float:left; height:25px; margin-left:150px;margin-top:-12px'>");
-printf("<input type='hidden' name='Course' value='%s' /></td>",  $cid);
-printf("</form>");
-
-
-//create form for deleting questions
-printf("<form name = 'q_Del' method='GET' action='q_Del.php'>");
-printf("<input type='hidden' name='Course' value='%s' /></td>",  $cid);
-
-printf('<input type="submit" value="Delete Checked Questions" Onclick="return ConfirmDelete()" align="right" style="color:red; height:25px; margin-left:100px; margin-top:-12px">');
 printf('</div>');
+printf('<br>');
 
 //create question table
 printf('<table align="center" border="1" cellspacing="0" cellpadding="4" 
@@ -67,8 +64,8 @@ while($row =  $result->fetch()){
 	
 	printf("<tr> \n");
 	printf("<td>");
-	//create checkboxes for the question deletion form
-	printf("<input type='checkbox' name ='q[]' value='%d'>",$id);
+	//create radiobuttons for selecting question to be edited
+	printf("<input type='radio' name ='id' id='id' value='%d'>",$id);
 	printf("</td>");
 	printf("<td>");
 	//list all of the question's categories
@@ -81,8 +78,7 @@ while($row =  $result->fetch()){
 	printf("<td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> \n", $name, $diff, $ques, $answ);
 	printf("</tr> \n");
 }
-//create button for deleting checked questions
-printf('<tr><td colspan="6" align="center"><input type="submit" Onclick="return ConfirmDelete()" style=color:red;height:25px value="Delete Checked Questions"></td></tr>');
+printf('<tr><td colspan="6" align="center"><input type="submit" style=height:25px Onclick="return empty()" value="Edit Selected Question"></td></tr>');
 printf("</table>\n");
 
 printf("</form>");

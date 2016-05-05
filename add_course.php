@@ -1,6 +1,31 @@
 <!-- Author: Sean Scott -->
 <?php include('head.php');?>
 
+<!--Validating Script -->
+<script>
+function empty() {
+	var response = "";
+	var x;
+
+	x = document.getElementById("cName").value;
+	if (x == "") {
+		response += "Your Course must have a name!\n";
+	}
+	
+	x = document.getElementById("cDesc").value;
+	if (x == "") {
+		response += "Your Course must have a description!\n";
+	}
+	if(response != ""){
+		alert(response);
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+</script>
+
 <div class="content">
 <h2 align="center">Add a Course</h2>
 
@@ -14,19 +39,19 @@
 <!-- row for course name -->
 <tr>
 <td>Course Name</td>
-<td><input type="text" name="cName" placeholder="name" size="69"></td>
+<td><input type="text" name="cName" id="cName" placeholder="name" size="69"></td>
 </tr>
 
 <!-- row for course description -->
 <tr>
 <td>Course Description</td>
-<td><textarea name="cDesc" value="" rows="5" cols="60"></textarea></td>
+<td><textarea name="cDesc" value="" id="cDesc" rows="5" cols="60"></textarea></td>
 </tr>
 
 <!-- submit button -->
 <tr>
 <td>submit</td>
-<td><input type="submit" value="Create Course" /></td>
+<td><input type="submit" value="Create Course" Onclick='return empty()' /></td>
 <?php printf("<input type='hidden' name='User' value='%s' /></td>",  $_SESSION["username"]); ?>
 </tr>
 

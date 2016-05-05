@@ -3,6 +3,30 @@
 
 $cid=$_GET['Course']; ?>
 
+<script>
+function empty() {
+	var response = "";
+	var x;
+
+	x = document.getElementById("catName").value;
+	if (x == "") {
+		response += "Your Category must have a name!\n";
+	}
+	
+	x = document.getElementById("catDesc").value;
+	if (x == "") {
+		response += "Your Category must have a description!\n";
+	}
+	if(response != ""){
+		alert(response);
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+</script>
+
 <div class="content">
 <h2 align="center">Add a Category</h2>
 
@@ -16,19 +40,19 @@ $cid=$_GET['Course']; ?>
 <!-- row for category name -->
 <tr>
 <td>Category Name</td>
-<td><input type="text" name="catName" placeholder="name" size="69"></td>
+<td><input type="text" name="catName" id="catName" placeholder="name" size="69"></td>
 </tr>
 
 <!-- row for category description -->
 <tr>
 <td>Category Description</td>
-<td><textarea name="catDesc" value="" rows="5" cols="60"></textarea></td>
+<td><textarea name="catDesc" id="catDesc" value="" rows="5" cols="60"></textarea></td>
 </tr>
 
 <!-- submit button -->
 <tr>
 <td>submit</td>
-<td><input type="submit" value="Create Category" /></td>
+<td><input type="submit" value="Create Category" Onclick='return empty()' /></td>
 <?php printf("<input type='hidden' name='Course' value='%s' /></td>",  $cid); ?>
 </tr>
 

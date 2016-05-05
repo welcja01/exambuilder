@@ -7,7 +7,7 @@ include_once('head.php');
 $name = $_GET['qName'];
 $question = $db->quote($_GET['qArea']);
 $answer = $db->quote($_GET['aArea']);
-$difficulty = $_GET['diff'];
+$difficulty = isset($_GET['diff']) ? $_GET['diff'] : 'medium';
 $cid=$_GET['Course'];
 
 //add input to question table in database
@@ -24,19 +24,27 @@ $qid = $resultValues[0];
 if ($result != false)
 {
 	printf('<div class="content"><p>Added new question to database.</p>');
-	
-	foreach ($_GET['cb'] as $catID){
-		//link the question to the specified categories in the database
-		$query = "INSERT INTO question_cat_relationships VALUES($catID, $qid);";
+	if(isset($_GET['cb'])){
+		foreach ($_GET['cb'] as $catID){
+			//link the question to the specified categories in the database
+			$query = "INSERT INTO question_cat_relationships VALUES($catID, $qid);";
+
+			$result = $db->query($query);
+			if($result != false)
+			{
+				printf("<p>Successfully added question to category.</p>\n");
+			}
+		}
+	}
+	else{
+		$query = "SELECT catID FROM question_cat WHERE name='unsorted' AND cid=$cid;";
+		$result = $db->query($query);
+		$resultValues = $result->fetch();
+		$unsortedID = $resultValues[0];
+
+		$query = "INSERT INTO question_cat_relationships VALUES($unsortedID, $qid);";
 
 		$result = $db->query($query);
-		if($result != false)
-		{
-			printf("<p>Successfully added question to category.</p>\n");
-		}
-		else{
-			printf('<div class="content"><p>Error adding question to category</p>'. $catID . ' ' . $qid);
-		}
 
 	}
 
